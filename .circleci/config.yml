@@ -41,7 +41,7 @@ jobs:
       - run:
           name: deploy over ssh
           command: |
-            ssh $SSH_USER@$SSH_HOST_SMOKETEST "chmod +x smoketest.sh && ./smoketest.sh"
+            ssh $SSH_USER@$SSH_HOST_SMOKETEST "chmod +x smoketest.sh && ./smoketest.sh $SSH_HOST_SMOKETEST "
 
   deploy:
     machine: true
