@@ -23,9 +23,9 @@ jobs:
           at: .
       - run:
           name: Build artifact
-          command: pwd && zip -r $CIRCLE_SHA1.zip ./
+          command: zip -r $CIRCLE_SHA1.zip ./
       - store_artifacts:
-          path: ./$CIRCLE_SHA1.zip
+          path: /$CIRCLE_SHA1.zip
           destination: prefix
       - persist_to_workspace:
           root: .
