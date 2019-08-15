@@ -66,9 +66,12 @@ workflows:
   flow:
     jobs:
       - test
-      - dockerize:
+      - package:
           requires:
             - test
-      - deploy:
+      - dockerize:
           requires:
-            - dockerize
+            - package
+      - deploy:
+        requires:
+          - dockerize
