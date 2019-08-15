@@ -26,7 +26,7 @@ jobs:
           command: mkdir ./dist && zip -r ./dist/$CIRCLE_SHA1.zip ./
       - store_artifacts:
           path: ./dist/
-          destination: prefix
+          destination: dist
       - persist_to_workspace:
           root: .
           paths:
