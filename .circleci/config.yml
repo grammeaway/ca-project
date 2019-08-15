@@ -9,7 +9,7 @@ jobs:
           name: Install dependencies
           command: pip install -r requirements.txt
       - run:
-          name: The python tests
+          name: Running tests
           command: python tests.py
       - persist_to_workspace:
           root: .
