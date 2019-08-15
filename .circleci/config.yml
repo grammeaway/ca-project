@@ -17,7 +17,7 @@ jobs:
             - .
   package:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: alpine-zip
     steps:
       - attach_workspace:
           at: .
