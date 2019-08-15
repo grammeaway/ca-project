@@ -6,13 +6,47 @@ jobs:
     steps:
       - checkout
       - run:
-          name: The python latest
+          name: The python tests
           command: python tests.py
-      - store_test_results:
-          path: build/test-results
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  build:
+    docker:
+      - image: grameaway/codechan
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: The python run
+          command: python run.py
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  dockerize:
+    machine: true
+    steps:
+      - attach_workspace:
+          at: .
+      # Login to docker
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+      # build the application image
+      - run: docker build -t $DOCKER_USER/codechan:$CIRCLE_SHA1 .
+
+      # deploy the image
+      - run: docker push $DOCKER_USER/codechan:$CIRCLE_SHA1
 
 workflows:
   version: 2
   flow:
     jobs:
       - test
+      - package:
+          requires:
+            - test
+      - dockerize:
+          requires:
+            - build
