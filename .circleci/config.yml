@@ -25,7 +25,7 @@ jobs:
           name: Build artifact
           command: zip -r $CIRCLE_SHA1.zip ./
       - store_artifacts:
-          path: ./$CIRCLE_SHA1.zip
+          path: ./
           destination: prefix
       - persist_to_workspace:
           root: .
