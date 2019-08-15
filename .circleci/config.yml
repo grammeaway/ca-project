@@ -10,3 +10,9 @@ jobs:
           command: python tests.py
       - store_tests_results:
           path: build/tests-results
+
+workflows:
+  version: 2
+  flow:
+    jobs:
+      - test
