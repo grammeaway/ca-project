@@ -12,19 +12,6 @@ jobs:
           root: .
           paths:
             - .
-  build:
-    docker:
-      - image: grameaway/codechan
-    steps:
-      - attach_workspace:
-          at: .
-      - run:
-          name: The python run
-          command: python run.py
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
   dockerize:
     machine: true
     steps:
@@ -44,9 +31,6 @@ workflows:
   flow:
     jobs:
       - test
-      - build:
-          requires:
-            - test
       - dockerize:
           requires:
-            - build
+            - test
