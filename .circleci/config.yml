@@ -1,0 +1,12 @@
+version: 2.0
+jobs:
+  test:
+    docker:
+      - image: grameaway/codechan:latest
+      steps:
+        - checkout
+        - run:
+          name: The python latest
+          command: python tests.py
+        - store_tests_results:
+           path: build/tests-results
