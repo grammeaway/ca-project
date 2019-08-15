@@ -16,8 +16,7 @@ jobs:
           paths:
             - .
   package:
-    docker:
-      - image: ubuntu:18.04
+    machine: true
     steps:
       - attach_workspace:
           at: .
