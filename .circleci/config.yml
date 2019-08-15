@@ -23,7 +23,7 @@ jobs:
           at: .
       - run:
           name: Build artifact
-          command: zip -r $CIRCLE_SHA1.zip ./dist/
+          command: zip -r ./dist/$CIRCLE_SHA1.zip ./
       - store_artifacts:
           path: ./dist/
           destination: prefix
