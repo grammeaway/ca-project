@@ -8,8 +8,6 @@ jobs:
       - run:
           name: The python latest
           command: python tests.py
-      - store_tests_results:
-          path: build/tests-results
 
 workflows:
   version: 2
